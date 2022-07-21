@@ -1,29 +1,29 @@
 <h1>Tutorial</h1>
 A quick tutorial on how to consume oms-payment adapter.
 
-<h2>Step 1 : Register with Adyen and get the api key</h2>
+<h2>Step 1 : Register with Adyen and get the API key</h2>
 
-Register a [test account](https://www.adyen.com/signup) with Adyen.Each request made to Adyen is precessed through an API credential which is linked to the test account.
-More on generating the api key [here](https://docs.adyen.com/development-resources/api-credentials#generate-api-key).
+Register a [test account](https://www.adyen.com/signup) with Adyen.Each request that is made to Adyen is processed through an API credential, which is linked to the test account.
+For more information about generating the API key, see [here](https://docs.adyen.com/development-resources/api-credentials#generate-api-key).
 
-<h2>Step 2 : Fork this repository and import the code to an IDE</h2>
+<h2>Step 2 : Fork the repository and import the code to an IDE</h2>
 
-In order to customise/consume this adapter , you need to first [fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) it and then clone it .
+In order to customise and use this adapter, you must first [fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) it and then clone it.
 
-Example : 
+For example,
 ````bash
 $ git clone https://github.com/<your_username_here>/oms-payments-adapter
 ````
 
-Once done , import the contents to an IDE(preferably Intellij).
+Once forked, import the contents to an IDE, preferably Intellij.
 
 <h2>Step 3:Map the client object model to adapters object model</h2>
 
-For the oms-payment adapter to work with any OMS/Payment service , the clients are required to adopt to their model to adapters model.
-In other words , the input and output's of the adapter are **PaymentCollectionInput** and **PaymentCollectionOutput** respectively, a mapper needs 
-to be written to map oms's input and output objects.
+For the oms-payment adapter to work with any order management system or payment service, the clients are required to adopt to 
+their model to the adapters model. In other words, when the input and output of the adapter are **PaymentCollectionInput** and
+**PaymentCollectionOutput** respectively, you must write a mapper to map the input and output objects of the order management system.
 
-Example mapper required for IBM OMS:
+An example of a mapper that is required for IBM Sterling Order Management:
 
 | IBM OMS Objects                      	| Adapters object         	| Comments                                                            	|
 |--------------------------------------	|-------------------------	|---------------------------------------------------------------------	|
@@ -31,7 +31,7 @@ Example mapper required for IBM OMS:
 | YFSExtnPaymentCollectionOutputStruct 	| PaymentCollectionOutput 	| Map YFSExtnPaymentCollectionOutputStruct to PaymentCollectionOutput 	|
 
 
-Example mapper required for Sample code:
+An example of a mapper that is required for the sample code:
 
 | Sample Objects        	| Adapters object         	| Comments                                                            	|
 |-----------------------	|-------------------------	|---------------------------------------------------------------------	|
@@ -39,10 +39,10 @@ Example mapper required for Sample code:
 | ExternalPaymentoutput 	| PaymentCollectionOutput 	| Map YFSExtnPaymentCollectionOutputStruct to PaymentCollectionOutput 	|
 
 
-To understand what **PaymentCollectionInput** and **PaymentCollectionOutput** mean, refer **javadocs**.
+To understand about **PaymentCollectionInput** and **PaymentCollectionOutput** mean, refer **javadocs**.
 
-The mandatory attributes required to be mapped are mentioned in **com.ibm.adapter.sample.mapper.PaymentMapper.java** file.This adapter uses mapstruct
-library for mapping using **@Mapping** annotation.
+The mandatory attributes that are required to be mapped are mentioned in **com.ibm.adapter.sample.mapper.PaymentMapper.java** file.This adapter uses the mapstruct
+library for mapping by using the **@Mapping** annotation.
 
 ````java
 @Mapper
@@ -70,16 +70,15 @@ public interface PaymentMapper {
 
 <h2>Step 4: Implement the IPaymentProcessingAdapter interface</h2>
 
-This interface contains most important methods required by the adapter. Refer **javadocs** and **com.ibm.adapter.sample.AdyenAdapter.java**
-to understand more.
+This interface contains most important methods that are required by the adapter. For more information, see **Javadoc** and **com.ibm.adapter.sample.AdyenAdapter.java** .
 
 <h2> Step 5: Code to invoke the adapter </h2>
 
-Invoke the adapter from OMS/payment service. The point of invocation should be during every:
+Invoke the adapter from OMS/payment service. The point of invocation should be during the following events:
 
 * Charge (Also referred to as Capture)
 * Reverse authorisation
-* Amend existing authorisation
+* Amend existing authorization
 * Refund
 * Re-authorization
 
@@ -113,13 +112,13 @@ public class SampleImplementation {
 
 <h2> Step 6: Package and install the adapter </h2>
 
-Create a jar of the project by executing maven package command.
+Create a jar file of the project by executing the maven package command.
 
 ````bash
 $ mvn clean package
 ````
 
-Once the package is complete , you will find the jar under **adapter-build** module.
+After the package is complete, you can find the Jar under the **adapter-build** module.
 
 ````
 .
@@ -134,10 +133,10 @@ the order management system.
 
 <h2>On consuming notifications from Adyen</h2>
 
-Consuming notifications via webhook is out of scope. But a brief note will be provided here.
-Adyen pushes the payment processing updates for each transaction via webhook notifications.
+Consuming notifications by using the webhook is not supported currently. But a brief note is provided here. Adyen pushes the payment processing updates for each transaction by using the webhook notifications.
 
-An example notification message :
+An example of the notification message:
+
 ````json
 {
   "amount" : {
@@ -157,6 +156,5 @@ An example notification message :
 }
 ````
 
-Each notification message has an attribute "success" and its value can be **true** or **false**.
-Depending on the value update the status of the transaction in the OMS.
+Each notification message contains the “success” attribute and its value can be **true** or **false**. Depending on the value, update the status of the transaction in the order management system.
 
