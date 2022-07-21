@@ -129,13 +129,8 @@ Once the package is complete , you will find the jar under **adapter-build** mod
 |-- adapter-build-1.0-SNAPSHOT-jars-with-all-modules.jar
 `-- adapter-build-1.0-SNAPSHOT.jar
 ````
- The target folder contains 2 jars :
-
- - adapter-build-1.0-SNAPSHOT-jars-with-all-modules.jar : This jar contains adapter code with dependencies
- - adapter-build-1.0-SNAPSHOT.jar : Contains the adapter code only.
-
-It is recommended to use the jar without dependencies and install the adapter's dependencies separately. List of dependencies is 
-available in ReadMe file.
+The jar **adapter-build-1.0-SNAPSHOT-jars-with-all-modules.jar** contains the code from all the modules of oms-payment-integration project. Install this jar on 
+the order management system.
 
 <h2>On consuming notifications from Adyen</h2>
 
