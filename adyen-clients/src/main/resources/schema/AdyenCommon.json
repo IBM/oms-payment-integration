@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "definitions": {
+    "reference": {
+      "type": "string",
+      "description": "Holds the unique reference, used for the various actions in the payment providers.",
+      "additionalProperties": false
+    },
+    "amount": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Holds the amount information for the transaction, contains the currency and amount values.",
+      "properties": {
+        "value": {
+          "description": "Holds the actual amount used for payment.",
+          "type": "number"
+        },
+        "currency": {
+          "description": "Holds the Currency used for payment.",
+          "enum": [
+            "USD",
+            "INR",
+            "EUR"
+          ]
+        }
+      }
+    },
+    "merchantAccount": {
+      "type": "string",
+      "description": "The merchant account that is used for processing the payment.",
+      "additionalProperties": false
+    },
+    "shopperReference": {
+      "type": "string",
+      "description": " Unique shopperReference, passed in the payment request for processing.",
+      "additionalProperties": false
+    },
+    "shopperInteraction": {
+      "type": "string",
+      "description": "Indicates whether you're creating a token, or using a previously created token.",
+      "enum": [
+        "ContAuth",
+        "Ecommerce"
+      ]
+    },
+    "recurringProcessingModel": {
+      "type": "string",
+      "description": "Pass it when you first create a token (to indicate what you intend to use the token for), and for each payment that you make with the token.",
+      "enum": [
+        "CardOnFile",
+        "Subscription",
+        "UnscheduledCardOnFile"
+      ]
+    }
+  }
+}

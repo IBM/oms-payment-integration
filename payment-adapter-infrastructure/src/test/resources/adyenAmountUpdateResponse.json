@@ -1,0 +1,11 @@
+{
+  "merchantAccount": "IBMAccount480ECOM",
+  "paymentPspReference": "G4C2SQV7VCQ2WN82",
+  "pspReference": "D5BKGQJ29L2GWR82",
+  "reference": "111112222",
+  "status": "received",
+  "amount": {
+    "currency": "USD",
+    "value": 400
+  }
+}

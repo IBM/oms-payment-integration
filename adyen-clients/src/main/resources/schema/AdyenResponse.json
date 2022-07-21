@@ -1,0 +1,44 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "title" : "AdyenResponse",
+  "type" : "object",
+  "properties" : {
+    "reference" : {
+      "$ref" : "AdyenCommon.json#/definitions/reference",
+      "description": "Holds the unique reference, used for the various actions in the payment providers."
+    },
+    "amount" : {
+      "type" : "object",
+      "description" : "Holds the amount information for the transaction, contains the currency and amount values.",
+      "javaType" : "com.ibm.iac.model.adyen.auto.Amount",
+      "$ref" : "AdyenCommon.json#/definitions/amount"
+    },
+    "merchantAccount" : {
+      "description": "Holds the unique identifier for the merchant account.",
+      "$ref" : "AdyenCommon.json#/definitions/merchantAccount"
+    },
+    "paymentPspReference" : {
+      "type" : "string",
+      "description": "Holds the unique reference belongs to the specific order.",
+      "additionalProperties" : false
+    },
+    "pspReference" : {
+      "type" : "string",
+      "description": "Holds the unique reference belongs to the specific action of each payment transaction.",
+      "additionalProperties" : false
+    },
+    "status" : {
+      "description" : "Holds the response status of the payment transactions.",
+      "enum" : [ "received" ]
+    },   
+     "resultCode" : {
+      "description" : "Holds the result Code for auth.",
+      "enum" : [ "Authorised","AuthenticationFinished","AuthenticationNotRequired","Cancelled","Error","Pending","Received","Refused","RedirectShopper" ]
+    },   
+     "merchantReference" : {
+       "type" : "string",
+       "description": "Holds the unique identifier for the merchant reference.",
+       "additionalProperties" : false
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AdyenRequest",
+  "type": "object",
+  "properties": {
+    "reference": {
+      "$ref": "AdyenCommon.json#/definitions/reference",
+      "description": "Holds the unique reference, used for the various actions in the payment providers."
+    },
+    "amount": {
+      "type": "object",
+      "description": "Holds the amount information for the transaction, contains the currency and amount values.",
+      "javaType": "com.ibm.iac.model.adyen.auto.Amount",
+      "$ref": "AdyenCommon.json#/definitions/amount"
+    },
+    "merchantAccount": {
+      "$ref": "AdyenCommon.json#/definitions/merchantAccount",
+      "description": "The merchant account that is used for processing the payment.",
+      "type": "string"
+    },
+    "returnUrl": {
+      "type": "string",
+      "description": "Holds the return URL from the payment provider, used for redirection.",
+      "additionalProperties": false
+    },
+    "paymentMethod": {
+      "type": "object",
+      "description": "The type and required details of a payment method to use it for transactions.",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "description": "Holds the payment method type.",
+          "type": "string"
+        },
+        "applePayToken": {
+          "description": "The stringified and base64 encoded paymentData, retrieved from the Apple framework.",
+          "type": "string"
+        },
+        "storedPaymentMethodId": {
+          "type": "string",
+          "description": "Identifier for the payment method used by the customer."
+        }
+      }
+    },
+    "shopperInteraction": {
+      "$ref": "AdyenCommon.json#/definitions/shopperInteraction",
+      "description": "Indicates whether you're creating a token, or using a previously created token."
+    },
+    "recurringProcessingModel": {
+      "$ref": "AdyenCommon.json#/definitions/recurringProcessingModel",
+      "description": "Pass it when you first create a token (to indicate what you intend to use the token for), and for each payment that you make with the token."
+    },
+    "shopperReference": {
+      "$ref": "AdyenCommon.json#/definitions/shopperReference",
+      "description": "Unique shopperReference, passed in the payment request for processing."
+    }
+  }
+}
