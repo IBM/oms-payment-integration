@@ -1,0 +1,4 @@
+OMS-Payment adapter
+Copyright 2022 IBM
+
+This product includes software developed at IBM (http://www.ibm.com/).

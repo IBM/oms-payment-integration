@@ -1,0 +1,10 @@
+{
+  "authorizationId":"123",
+  "merchantId":"IBMAccount480ECOM",
+  "amount":15,
+  "currency":"USD",
+  "paymentReference1":"ABCDEFGHIJK",
+  "orderNo":"786666",
+  "paymentReference2":"HGDSYYI12223"
+
+}
