@@ -229,7 +229,7 @@ The tutorial section explains in detail about the implementation. The rest of th
 
 ## Architecture
 
-<img src="images/Adapter.png" width="800" height="500">
+<img src="images/adyen-flow-1.png" width="800" height="500">
 
 There are 2 layers in the oms-payment adapter:
 <ol>
@@ -308,9 +308,10 @@ Answer - It depends on the attributes that are passed in the PaymentCollectionIn
 
 ## Further reading
 
-| Topic                     	| Resources                              	|
-|---------------------------	|----------------------------------------	|
-| Checkout integration      	| https://docs.adyen.com/online-payments 	|
+| Topic                                                      	| Resources                                                                              	|
+|------------------------------------------------------------	|----------------------------------------------------------------------------------------	|
+| Checkout integration                                       	| https://docs.adyen.com/online-payments                                                 	|
+| Integrate Adyen with IBM Sterling Order Management, Part 1 	| https://developer.ibm.com/articles/integrate-apple-pay-with-sterling-order-management/ 	|
 
 
 
